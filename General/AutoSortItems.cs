@@ -43,6 +43,9 @@ public class AutoSortItems : DailyModuleBase
         if (ImGui.Checkbox(GetLoc("SendNotification"), ref ModuleConfig.SendNotification))
             SaveConfig(ModuleConfig);
         
+        if (ImGui.Button("Sort Now"))
+            TaskHelper.Enqueue(CheckCanSort);
+        
         ImGui.Spacing();
         
         var       tableSize = (ImGui.GetContentRegionAvail() * 0.75f) with { Y = 0 };
