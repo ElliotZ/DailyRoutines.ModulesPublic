@@ -36,15 +36,18 @@ public class AutoSortItems : DailyModuleBase
 
     protected override void ConfigUI()
     {
+		var buttonLabel = LuminaGetter.GetRow<Addon>(1389)!.Value.Text.ExtractText();
+        if (ImGui.Button(buttonLabel))
+            TaskHelper.Enqueue(CheckCanSort);
+
+		ImGui.Spacing();
+
         if (ImGui.Checkbox(GetLoc("SendChat"), ref ModuleConfig.SendChat))
             SaveConfig(ModuleConfig);
         
         ImGui.SameLine();
         if (ImGui.Checkbox(GetLoc("SendNotification"), ref ModuleConfig.SendNotification))
             SaveConfig(ModuleConfig);
-        
-        if (ImGui.Button(GetLoc("AutoSortItems-SortNow")))
-            TaskHelper.Enqueue(CheckCanSort);
         
         ImGui.Spacing();
         
