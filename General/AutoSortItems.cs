@@ -43,7 +43,7 @@ public class AutoSortItems : DailyModuleBase
         if (ImGui.Checkbox(GetLoc("SendNotification"), ref ModuleConfig.SendNotification))
             SaveConfig(ModuleConfig);
         
-        if (ImGui.Button("Sort Now"))
+        if (ImGui.Button(GetLoc("AutoSortItems-SortNow")))
             TaskHelper.Enqueue(CheckCanSort);
         
         ImGui.Spacing();
